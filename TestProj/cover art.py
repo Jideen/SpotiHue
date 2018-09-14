@@ -13,7 +13,10 @@ def setup():
     b = Bridge('192.168.86.22')
     b.set_light(1, 'on', True)
     b.set_light(2, 'on', True)
+
 def theScript():
+    global url
+    global prop_color
     scope = 'user-read-currently-playing'
 
     token = util.prompt_for_user_token('h1z1vr98wjwqiyjfrs13bod9r', scope, client_id='1abdcc884a4c4bf9b0f6ed7b65d07e07', client_secret='7ca1f32cbf004d34a10f4000e64e83d4',
@@ -25,45 +28,71 @@ def theScript():
     stuff = re.findall(r'(https?://[^\s]+)', result)
     removetable = str.maketrans('', '', '",')
     out_list = [s.translate(removetable) for s in stuff]
-    url = out_list[random.randint(5,8)]
-    if "image" in url:
-        print(url)
-        urllib.request.urlretrieve(url, "image.jpg")
-        color_thief = ColorThief('image.jpg')
-        dominant_color = color_thief.get_color(quality=1)
-        prop_color = colorsys.rgb_to_hsv(dominant_color[0],dominant_color[1],dominant_color[2])
-        print(prop_color)
+    for i in range(1,10):
+        url_check = out_list[i]
+        if 'image' in url_check:
+            global url
+            global prop_color
+            url_part = url_check.split('/image/')
+            url_base = str("https://i.scdn.co/image/")
+            url = str(url_base+url_part[1])
+            urllib.request.urlretrieve(url, "image.jpg")
+            print(url)
+            color_thief = ColorThief('image.jpg')
+            dominant_color = color_thief.get_color(quality=1)
+            prop_color = colorsys.rgb_to_hsv(dominant_color[0], dominant_color[1], dominant_color[2])
+            print(prop_color)
+            i = 0
+        i = i + 1
+
+
+
+
+    # look for text after '/images/' detected in string
+    # search url of 'https://i.scdn.co/images/' + found text
+    # rather than randomly pulling a url. This will help immeasurably.
+    # use iterative loop to look for '/images/' in items contained by out_list
+    # stop loop when the first image url is found.
+    # restart loop and repeat until song changes
+    # use this url until a change is detected from the url_old
+    # set the new url to the url_old variable
+    # only set lights once this change happens
+    if "f0c53ef4d3" in str(url):
+        b.set_light(1, 'hue', 47104)
+        b.set_light(1, 'sat', 254)
+        b.set_light(1, 'bri', 72)
+        b.set_light(2, 'hue', 47104)
+        b.set_light(2, 'sat', 254)
+        b.set_light(2, 'bri', 72)
+        print("But soon comes mister night.")
+        time.sleep(2)
+        theScript()
+    if "83c58aeccf0f8055" in url:
+        b.set_light(1, 'hue', 47104)
+        b.set_light(1, 'sat', 254)
+        b.set_light(1, 'bri', 72)
+        b.set_light(2, 'hue', 47104)
+        b.set_light(2, 'sat', 254)
+        b.set_light(2, 'bri', 72)
+        time.sleep(2)
+        print("Reaching over, now his hand is on your shoulder.")
+        theScript()
+
+    if "0c53ef4d3" not in url and "ccf0f8055" not in url:
+        b.set_light(1, 'hue', (int(prop_color[0] * 65535)))
+        b.set_light(1, 'sat', (int(prop_color[2])))
+        b.set_light(1, 'bri', (int(prop_color[1] * 254)))
+        b.set_light(2, 'hue', (int(prop_color[0] * 65535)))
+        b.set_light(2, 'sat', (int(prop_color[2])))
+        b.set_light(2, 'bri', (int(prop_color[1] * 254)))
         print(b.get_api())
-        if "f0c53ef4d3" in url:
-            b.set_light(1, 'hue', 47104)
-            b.set_light(1, 'sat', 254)
-            b.set_light(1, 'bri', 72)
-            b.set_light(2, 'hue', 47104)
-            b.set_light(2, 'sat', 254)
-            b.set_light(2, 'bri', 72)
-            time.sleep(2)
-            theScript()
-        if "83c58aeccf0f8055" in url:
-            b.set_light(1, 'hue', 47104)
-            b.set_light(1, 'sat', 254)
-            b.set_light(1, 'bri', 72)
-            b.set_light(2, 'hue', 47104)
-            b.set_light(2, 'sat', 254)
-            b.set_light(2, 'bri', 72)
-            time.sleep(2)
-            theScript()
-        if "0c53ef4d3" not in url and "ccf0f8055" not in url:
-            b.set_light(1, 'hue', (int(prop_color[0] * 65535)))
-            b.set_light(1, 'sat', (int(prop_color[2])))
-            b.set_light(1, 'bri', (int(prop_color[1] * 254)))
-            b.set_light(2, 'hue', (int(prop_color[0] * 65535)))
-            b.set_light(2, 'sat', (int(prop_color[2])))
-            b.set_light(2, 'bri', (int(prop_color[1] * 254)))
-            time.sleep(20)
-            theScript()
+        time.sleep(10)
+        theScript()
     elif "image" not in url:
         url = out_list[random.randint(5,10)]
         time.sleep(2)
         theScript()
+
+
 setup()
 theScript()
