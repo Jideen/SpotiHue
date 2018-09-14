@@ -7,7 +7,15 @@ import json
 import colorsys
 from phue import Bridge
 from PIL import ImageFile
-from io import BytesIO
+
+# TODO: Implement multiple Spotify accounts.
+# TODO: Only request info if tested user's
+# TODO: Playback data indicates that the
+# TODO: Playback device is Sony XBR49X900E
+
+# TODO: Fix OSError:
+# TODO: cannot identify image file 'image.jpg'
+
 global old
 old = set()
 
@@ -55,15 +63,6 @@ def theScript():
             break
         else:
             newSong = True
-    # look for text after '/images/' detected in string DONE
-    # search url of 'https://i.scdn.co/images/' + found text DONE
-    # rather than randomly pulling a url. This will help immeasurably. DONE
-    # use iterative loop to look for '/images/' in items contained by out_list DONE
-    # stop loop when the first image url is found. DONE
-    # restart loop and repeat until song changes DONE
-    # use this url until a change is detected from the url_old DONE
-    # set the new url to the url_old variable DONE
-    # only set lights once this change happens
     if "f0c53ef4d3" in str(url):
         b.set_light(1, 'hue', 47104)
         b.set_light(1, 'sat', 254)
