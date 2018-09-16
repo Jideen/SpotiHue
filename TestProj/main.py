@@ -1,6 +1,6 @@
-from cover_art import theScript as coverArt
-from Device_detection import deviceCode as detectDevice
-from token_check import tokenCode
+from .cover_art import theScript as coverArt
+from .Device_detection import deviceCode as detectDevice
+from .token_check import tokenCode
 from phue import Bridge
 import spotipy.util as util
 from PIL import ImageFile
