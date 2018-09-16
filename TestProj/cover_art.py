@@ -6,16 +6,6 @@ from colorthief import ColorThief
 import json
 import colorsys
 
-# TODO: Implement multiple Spotify accounts.
-# TODO: Only request info if tested user's
-# TODO: Playback data indicates that the
-# TODO: Playback device is Sony XBR49X900E
-
-# TODO: Fix OSError:
-# TODO: cannot identify image file 'image.jpg'
-
-old = set()
-
 
 def theScript(user, scope):
     global b
