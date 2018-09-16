@@ -3,8 +3,7 @@ from Device_detection import deviceCode as detectDevice
 from token_check import tokenCode
 from phue import Bridge
 import spotipy.util as util
-
-# Run func(x) with parameters param[i] in contained loop
+from PIL import ImageFile
 
 username = ['h1z1vr98wjwqiyjfrs13bod9r', '[mag]intensity', 'user3', 'user4', 'user5']
 correctUser = ['', '']
@@ -31,5 +30,4 @@ def theCode():
         detectDevice(username[i], scope[i])
         if username[i] in correctUser[1]:
             coverArt(username[i], scope[i])
-            theCode()
-        else:
+        theCode()
