@@ -1,0 +1,26 @@
+TODO: Load spotify profiles of all users
+TODO: Check which user is casting to TV
+TODO: set cover art script to use current
+TODO: User's spotify auth token
+
+HOWDO:
+------
+Create tokens for all accounts DONEish
+Check each token for current playback state DONEish
+if playing on TV set global token to current token
+Check isUser boolean and then execute album art script
+if bool = false, then set bool to true. If false,
+check tokens again to see which one is active when
+device name contains 'XBR-49.' If same, check again in ten
+seconds, if changed, set global token and repeat.
+Additional: Print real name associated with current Spotify
+account.
+Additional: Implement forever python script to ensure crash is
+not fatal
+Port to Raspberry pi for passive running
+VERIFY: Only one auth token must be issued per user Yes
+VERIFY: Switching User token in use will not
+invalidate other tokens
+Potential solution: Use all tokens assigned to different
+variables and functions, only use active tokens, but keep
+inactive tokens valid
