@@ -1,6 +1,7 @@
 from .cover_art import theScript as coverArt
 from .Device_detection import deviceCode as detectDevice
 from .token_check import tokenCode
+from .color_name import *
 from phue import Bridge
 import spotipy.util as util
 from PIL import ImageFile
@@ -14,7 +15,7 @@ token = util.prompt_for_user_token('', '', client_id='', client_secret='', redir
 b = Bridge('192.168.86.22')
 spotify = ''
 old = set()
-
+prop_color = ['']
 
 def setup():
     global b
@@ -26,8 +27,9 @@ def setup():
 
 def theCode():
     for i in range(0, len(username) - 1):
-        tokenCode(username[i], scope[i])
+        tokenCode(username[i], scope[i],len(username))
         detectDevice(username[i], scope[i])
         if username[i] in correctUser[1]:
             coverArt(username[i], scope[i])
+            print("Current color: "+get_colour_name(prop_color)+".")
         theCode()
