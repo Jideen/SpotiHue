@@ -1,5 +1,6 @@
 import webcolors
 
+
 def closest_colour(requested_colour):
     min_colours = {}
     for key, name in webcolors.css3_hex_to_names.items():
@@ -10,6 +11,7 @@ def closest_colour(requested_colour):
         min_colours[(rd + gd + bd)] = name
     return min_colours[min(min_colours.keys())]
 
+
 def get_colour_name(requested_colour):
     try:
         closest_name = actual_name = webcolors.rgb_to_name(requested_colour)
@@ -17,4 +19,3 @@ def get_colour_name(requested_colour):
         closest_name = closest_colour(requested_colour)
         actual_name = None
     return actual_name, closest_name
-
