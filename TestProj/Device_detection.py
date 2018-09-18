@@ -19,8 +19,6 @@ def deviceCode(usrnm, scp, token, users, iter, usrnmv2):
     spotify = spotipy.Spotify(auth=token)
     playback_info = spotify.current_playback('US')
     user_info = spotify.current_user()
-    # print(user_info)
-    print(usrnm, "         ", usrnmv2)
     user_data = json.dumps(user_info)
     narrow = user_data.split('name": "')
     narrowstr = str(narrow[1])

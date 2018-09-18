@@ -1,13 +1,10 @@
 import spotipy
-import spotipy.util as util
 from phue import Bridge
 import re
 import urllib
 from colorthief import ColorThief
 import json
 import colorsys
-import webcolors
-import time
 
 old = set()
 newSong = True
@@ -68,7 +65,6 @@ def theLights(colors):
     b = Bridge('192.168.86.22')
     global prop_color
     prop_color = colors
-    # print("setting lights to ",colorCode(),"\n")
     b.set_light([1, 2], 'hue', (int(prop_color[0] * 65535)))
     b.set_light([1, 2], 'bri', (int(prop_color[1] * 254)))
     b.set_light([1, 2], 'sat', (int(prop_color[2])))

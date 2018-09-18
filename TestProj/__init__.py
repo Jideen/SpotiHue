@@ -1,6 +1,4 @@
-from .cover_art import theScript as coverArt
-from .Device_detection import deviceCode as detectDevice
-from .token_check import tokenCode
-from .color_name import *
-from .install import install
+from .cover_art import *
+from .Device_detection import *
+from .token_check import *
 VERSION = '1.0.0'
