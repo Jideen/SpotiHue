@@ -26,7 +26,6 @@ def getVals(yeet):
 
 
 def theScript(data):
-    global b
     global newSong
     for i in range(4, 9):
         try:

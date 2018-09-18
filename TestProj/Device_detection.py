@@ -27,7 +27,7 @@ def deviceCode(usrnm, scp, token, users, iter, usrnmv2):
     filter1 = resultp.split('name"')
     try:
         name = str(filter1[1])
-        if "Living" in name:
+        if "XBR-49" in name:
             correctUser = [usrnm, scp]
             user_token = dataPool[iter]
             boolPlay = True

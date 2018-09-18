@@ -13,7 +13,6 @@ username = ['[mag]intensity', 'h1z1vr98wjwqiyjfrs13bod9r']  # h1z1vr98wjwqiyjfrs
 scope = 'user-read-playback-state,user-read-currently-playing,user-read-recently-played'  # 'user-read-playback-state,user-read-currently-playing,user-read-recently-played']
 b = Bridge('192.168.86.22')
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-testBool = False
 i = 0
 
 

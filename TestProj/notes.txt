@@ -5,15 +5,15 @@ TODO: User's spotify auth token
 
 HOWDO:
 ------
-Create tokens for all accounts DONEish
-Check each token for current playback state DONEish
-if playing on TV set global token to current token
-Check isUser boolean and then execute album art script
-if bool = false, then set bool to true. If false,
-check tokens again to see which one is active when
-device name contains 'XBR-49.' If same, check again in ten
-seconds, if changed, set global token and repeat.
-Additional: Print real name associated with current Spotify
+Create tokens for all accounts DONE
+Check each token for current playback state DONE
+if playing on TV set global token to current token DONE
+Check isUser boolean and then execute album art script DONE
+if bool = false, then set bool to true. If false, DONE
+check tokens again to see which one is active when DONE
+device name contains 'XBR-49.' If same, check again in ten DONE
+seconds, if changed, set global token and repeat. DONE
+Additional: Print real name associated with current Spotify 
 account.
 Additional: Implement forever python script to ensure crash is
 not fatal
