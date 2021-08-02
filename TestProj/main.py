@@ -31,7 +31,7 @@ def theCode():
             coverArt(getVals(jaydenToken(scope)))
             theLights(cc())
     else:
-        print("Hang yourself.")
+        print("That aint it chief.")
     i = (i * -1) + 1
     theCode()
 
